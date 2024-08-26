@@ -63,6 +63,7 @@ class _Dashboard1State extends State<Dashboard1> {
       body: ListView.builder(
         itemBuilder: (_, index) {
           var mhttpData = Modeluser.fromMap(HttpMapclass.httpData[index]);
+        int myIndex = index; // unkown issue if facing but trouble shooted
           return ListTile(
               leading: Container(
                   child: Image.network(mhttpData.img ??
@@ -74,7 +75,7 @@ class _Dashboard1State extends State<Dashboard1> {
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (index) {
-                          return UpdateOprations({});
+                          return UpdateOprations(opIndex: myIndex);
                         }));
                       },
                       icon: Icon(Icons.edit)),

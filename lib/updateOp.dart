@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:usermodel_with_crud/myhttp.dart';
 
 class UpdateOprations extends StatelessWidget {
-  UpdateOprations(index) {
-    int index;
-  }
-
-  TextEditingController idController =
-      TextEditingController();
+  final int opIndex;
+  UpdateOprations({super.key, required this.opIndex});
+  TextEditingController idController = TextEditingController(/*text: HttpMapclass.httpData[opIndex].toString()*/);
   TextEditingController nameController = TextEditingController();
   TextEditingController imgController = TextEditingController();
 
@@ -15,7 +12,7 @@ class UpdateOprations extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("ADD YOUR RCORD"),
+        title: Text("UPDATE YOUR RCORD"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(30.0),
@@ -27,7 +24,7 @@ class UpdateOprations extends StatelessWidget {
             TextField(
               controller: idController,
               decoration: InputDecoration(
-                label: Text("Please Enter ID:"),
+                label: Text("Please Update ID:"),
                 hintText: "ID:",
                 border: OutlineInputBorder(),
               ),
@@ -38,7 +35,7 @@ class UpdateOprations extends StatelessWidget {
             TextField(
               controller: nameController,
               decoration: InputDecoration(
-                label: Text("Please Enter Name:"),
+                label: Text("Please Update Name:"),
                 hintText: "Name:",
                 border: OutlineInputBorder(),
               ),
@@ -49,7 +46,7 @@ class UpdateOprations extends StatelessWidget {
             TextField(
               controller: imgController,
               decoration: InputDecoration(
-                label: Text("Please Enter IMG URL:"),
+                label: Text("Please Update IMG URL:"),
                 hintText: "IMG URL:",
                 border: OutlineInputBorder(),
               ),
@@ -59,17 +56,15 @@ class UpdateOprations extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  Map<String, dynamic> addData = {
+                HttpMapclass.httpData[opIndex] = {
                     'id': idController.text.toString(),
                     'name': nameController.text.toString(),
                     'img': imgController.text.toString()
                   };
 
-                  HttpMapclass.httpData.add(addData);
-
                   // print(HttpMapclass.httpData);
 
-                  Navigator.pop(context);
+                 Navigator.pop(context);
                 },
                 child: Text("Submit"))
           ],
