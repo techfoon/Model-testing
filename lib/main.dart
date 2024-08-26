@@ -55,6 +55,13 @@ class _Dashboard1State extends State<Dashboard1> {
         img: 'https://cdn-icons-png.flaticon.com/512/149/149074.png')
   ];*/
   @override
+  /*void initState() {
+    var mhttpData = Modeluser.fromMap(HttpMapclass.httpData[0]);
+    setState(() {});
+    super.initState();
+  }*/
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -63,7 +70,7 @@ class _Dashboard1State extends State<Dashboard1> {
       body: ListView.builder(
         itemBuilder: (_, index) {
           var mhttpData = Modeluser.fromMap(HttpMapclass.httpData[index]);
-        int myIndex = index; // unkown issue if facing but trouble shooted
+          int myIndex = index; // unkown issue if facing but tr
           return ListTile(
               leading: Container(
                   child: Image.network(mhttpData.img ??

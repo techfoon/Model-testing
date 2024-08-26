@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:usermodel_with_crud/myhttp.dart';
 
-class Oprations extends StatelessWidget {
+class Oprations extends StatefulWidget {
+  @override
+  State<Oprations> createState() => _OprationsState();
+}
+
+class _OprationsState extends State<Oprations> {
   TextEditingController idController = TextEditingController();
+
   TextEditingController nameController = TextEditingController();
+
   TextEditingController imgController = TextEditingController();
 
   @override
@@ -62,9 +69,10 @@ class Oprations extends StatelessWidget {
 
                   HttpMapclass.httpData.add(addData);
 
-                 // print(HttpMapclass.httpData);
+                  // print(HttpMapclass.httpData);
 
                   Navigator.pop(context);
+                  setState(() {});
                 },
                 child: Text("Submit"))
           ],

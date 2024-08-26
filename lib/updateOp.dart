@@ -3,10 +3,15 @@ import 'package:usermodel_with_crud/myhttp.dart';
 
 class UpdateOprations extends StatelessWidget {
   final int opIndex;
-  UpdateOprations({super.key, required this.opIndex});
-  TextEditingController idController = TextEditingController(/*text: HttpMapclass.httpData[opIndex].toString()*/);
-  TextEditingController nameController = TextEditingController();
-  TextEditingController imgController = TextEditingController();
+  TextEditingController? idController;
+  TextEditingController? nameController;
+  TextEditingController? imgController;
+  UpdateOprations({super.key, required this.opIndex,}) {
+    idController = TextEditingController(
+        text: HttpMapclass.httpData[opIndex]['id'].toString());
+    nameController = TextEditingController( text: HttpMapclass.httpData[opIndex]['name'].toString());
+      imgController = TextEditingController( text: HttpMapclass.httpData[opIndex]['img'].toString());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,15 +61,15 @@ class UpdateOprations extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                HttpMapclass.httpData[opIndex] = {
-                    'id': idController.text.toString(),
-                    'name': nameController.text.toString(),
-                    'img': imgController.text.toString()
+                  HttpMapclass.httpData[opIndex] = {
+                    'id': idController!.text.toString(),
+                    'name': nameController!.text.toString(),
+                    'img': imgController!.text.toString()
                   };
 
                   // print(HttpMapclass.httpData);
 
-                 Navigator.pop(context);
+                  Navigator.pop(context);
                 },
                 child: Text("Submit"))
           ],
